@@ -6,7 +6,7 @@ from flask import request
 my_square = make_sqaure.make_square(server.request.form["nm"])
 final_letter = make_sqaure.final_letter
 
-# TODO: Word here must be the randomized phrasex
+# TODO: Word here must be the randomized phrase
 
 def make_digram(word):
     """This Function Splits The Initial Phase Into 2 Letter Pairs"""
@@ -41,7 +41,6 @@ def digram(di_msg):
             re_string = True
             break
     # Adds x if same 2 letters
-        # TODO: If same letters are x, add a different letter
         if item[1][0] == item[1][1]:
             di_msg[item[0]] = f"{item[1][0]}X{item[1][1]}"
             re_string = True

@@ -4,8 +4,6 @@ import random
 import server
 from flask import request
 
-# TODO: in my_di the "hello world" must be the random quote imported or chosen at random from an api of qoutes
-
 # This will be replaced with an api or a much larger list of quotes
 # Chooses a quote at random
 with(open("phrases.txt")) as p:
@@ -85,7 +83,6 @@ def final_encrpyt():
     for item in range(0, len(l_pair), 4):
         final_pairs.append((l_pair[item], l_pair[item+1], l_pair[item+2], l_pair[item+3]))
 
-    # TODO: using final pairs, create new list using if statements to make new location
 
     e_letters = []
 
@@ -96,7 +93,6 @@ def final_encrpyt():
         letter_one = plain[item]
         letter_two = plain[item+1]
         # Checks of letters are in same row, if yes, shifts letters to right
-        #TODO: this is where its breaking
         if letter_one[1] == 4 and letter_two[1] == 5 and letter_one[0] == letter_two[0]:
             new_rounded_one = 4
             new_letter_one = (letter_one[0], new_rounded_one, 2)
