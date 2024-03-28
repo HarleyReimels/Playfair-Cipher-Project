@@ -85,7 +85,8 @@ def final_encrpyt():
 
 
     e_letters = []
-
+    for item in plain:
+        print(f"Plain: {plain}")
     for item in range(0, len(plain), 2):
 
         new_letter_one = ""
@@ -144,8 +145,12 @@ def final_encrpyt():
         e_letters.append(new_letter_two)
 
     encrypted_text = ""
+    
+    for item in e_letters:
+        print(item)
     for item in e_letters:
         if len(item) > 2:
+            print(item)
             encrypted_text += (my_square[item[0]][item[1]][item[2]])
         else:
             encrypted_text += (my_square[item[0]][item[1]])
