@@ -19,15 +19,6 @@ def make_digram(word):
     return digram(split_msg)
 
 
-def make_initial_digram(wordz):
-    word = wordz
-    word = word.upper().replace(" ", "")
-    split_msg = []
-    for item in range(0, len(word), 2):
-        split_msg.append(word[item:item + 2])
-    return digram(split_msg)
-
-
 def digram(di_msg):
     # Checks if all digram are different letters. If not adds x then re runs digram maker
     re_string = False
