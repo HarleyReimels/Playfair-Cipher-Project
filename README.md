@@ -19,10 +19,10 @@ Next, the key code has any non-unique element removed, while retaining the order
 the grid then adds the key code to each row. Once the key code is finished being added, the alphabet letters are parsed, removing the already existing key code letters, and adding those to the grid.
 
 ###### Creating the Digrams
-coming soon
+To create a digram we need a phrase. I load phrases in from phrases.txt, into make_digram. The first thing we must do to the phrase is remove all the punctuation. Next, we split the message into pairs and add each pair to a list. Then we verify each pair are different letters, if not, then we add an X between them. If this happens, we rerun our first function, which breaks all the letters back into pairs. We also check to see if the final element has 2 letters, if it is only 1 letter, we add the last letter in the grid to make this a pair. Once every element has 2 letters and each item is unique, we move on to encrypting the message.
 
 ###### Encrypting the Message
-coming soon
+This is the heart of the program, plain_to_encrypt. We begin by assigning 4 blank variables, these variables will track the row, and column of each letter. Iterating through the grid, when we locate the first letter we record its row and its index. The row we find by using enumerate on the grid, and the index gives us which column the letter will be in. We do this for the second letter as well. Now we check to see if they are in the same column, if they are we add 1 to each of the columns, and if that number is greater than 5, we reset it to 0. We do the same for rows, except shifting right. Lastly if they are in different rows, and different columns, letter ones column is now equal to letter twos column. Letter two's column is equal to letter ones column. We then retrieve the letters from these locations, append them to a new list and print them out.
 
 ###### Creating and Pushing to the server
 coming soon
