@@ -17,7 +17,9 @@ final_letter = f"/{make_sqaure.final_letter}"
 
 my_di = make_digram.make_initial_digram(phrase)
 
+
 def plain_to_encrypt(my_dia):
+    """This Function returns the location of each of the original letters (x,y)"""
     encrypted_text = []
 
     letter_one_row = ""
@@ -30,6 +32,7 @@ def plain_to_encrypt(my_dia):
         # Assigns First and Second letter of Digram
         letter_one = pair[0]
         letter_two = pair[1]
+
         # Loops through each row of the grid
         for row in enumerate(my_square):
             if letter_one in row[1]:
@@ -67,22 +70,9 @@ def plain_to_encrypt(my_dia):
 
     return encrypted_text
 
-
+# README Encrpyted text is correct, review final encrypt
 def final_encrpyt():
     plain = plain_to_encrypt(my_di)
-
-    l_pair = []
-
-    for pair in plain:
-        l_pair.append(pair[0])
-        l_pair.append(pair[1])
-
-    final_pairs = []
-
-    # Every tuple is put into a 4 pair tuple
-    for item in range(0, len(l_pair), 4):
-        final_pairs.append((l_pair[item], l_pair[item+1], l_pair[item+2], l_pair[item+3]))
-
 
     e_letters = []
     for item in range(0, len(plain), 2):
@@ -91,12 +81,17 @@ def final_encrpyt():
         new_letter_two = ""
         letter_one = plain[item]
         letter_two = plain[item+1]
-        # Checks of letters are in same row, if yes, shifts letters to right
+
+        # Letter one and letter two are the coordinates (x, y) where x is the row and y is the column
+      
+        # Checks of letters are in same row and are in the same final block
         if letter_one[1] == 4 and letter_two[1] == 5 and letter_one[0] == letter_two[0]:
             new_rounded_one = 4
             new_letter_one = (letter_one[0], new_rounded_one, 2)
             new_rounded_two = 0
             new_letter_two = (letter_two[0], new_rounded_two)
+
+        # Checks if letters are in the same row
         elif letter_one[0] == letter_two[0]:
             # If second digit on right shift is greater than 5, assigns it value 0 otherwise adds + 1
             if letter_one[1] + 1 >= 5:
@@ -104,7 +99,8 @@ def final_encrpyt():
                 new_letter_one = (letter_one[0], new_rounded_one)
             else:
                 new_letter_one = (letter_one[0], letter_one[1] + 1)
-
+            
+            
             if letter_two[1] + 1 == 5:
                 new_rounded_two = 0
                 new_letter_two = (letter_two[0], new_rounded_two)
@@ -113,7 +109,7 @@ def final_encrpyt():
 
 
         # Checks if letters are in same column
-        elif letter_one[1] == letter_two[1] or letter_one[1] + 1 == letter_two[1]:
+        elif letter_one[1] == letter_two[1] or letter_one[1] == 4 and letter_two[1] == 5:
             # If second digit on right shift is greater than 5, assigns it value 0 otherwise adds + 1
             if letter_one[0] + 1 == 5:
                 new_rounded_one = 0
@@ -129,7 +125,9 @@ def final_encrpyt():
                 new_letter_two = (letter_two[0] + 1, letter_two[1])
 
         # Final statement solves for the square
+        # Different Columns and Different Rows
         else:
+            # If the position is the last position in the grid
             if letter_one[1] == 5:
                 new_letter_two = (letter_two[0], 4)
                 new_letter_one = (letter_one[0], letter_two[1])
@@ -139,11 +137,11 @@ def final_encrpyt():
             else:
                 new_letter_one = (letter_one[0], letter_two[1])
                 new_letter_two = (letter_two[0], letter_one[1])
+
         e_letters.append(new_letter_one)
         e_letters.append(new_letter_two)
 
     encrypted_text = ""
-    
     for item in e_letters:
         if len(item) > 2:
             print(item)
