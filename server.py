@@ -1,7 +1,9 @@
 from flask import Flask, render_template, url_for, redirect, request
 
 app = Flask(__name__)
-empty_space = "MISSING"
+
+# Black Space Character
+empty_space = "‎ "
 global plz, box
 
 @app.route("/t")
